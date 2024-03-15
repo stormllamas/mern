@@ -1,9 +1,13 @@
 import express from "express";
-import connectDB from "./config/db";
+const connectDB = require("./config/db");
 
 const app = express();
 
 connectDB();
+
+// Init Middleware
+app.use(express.json());
+// app.use(express.json({ extended: false }));
 
 app.get("/", (req, res) => res.send("API Running"));
 
