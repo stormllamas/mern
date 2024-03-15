@@ -20,6 +20,7 @@
     "request": "^2.88.2"
   },
   "devDependencies": {
+    "@types/node": "^20.11.28",
     "concurrently": "^8.2.2",
     "nodemon": "^3.1.0"
   }
