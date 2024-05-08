@@ -1,5 +1,10 @@
 import express from "express";
-const connectDB = require("./config/db");
+import connectDB from "./config/db";
+
+import usersRouter from "./routes/api/users";
+import authRouter from "./routes/api/auth";
+import profileRouter from "./routes/api/profile";
+import postsRouter from "./routes/api/posts";
 
 const app = express();
 
@@ -7,15 +12,14 @@ connectDB();
 
 // Init Middleware
 app.use(express.json());
-// app.use(express.json({ extended: false }));
 
 app.get("/", (req, res) => res.send("API Running"));
 
 // Define Routes
-app.use("/api/users", require("./routes/api/users"));
-app.use("/api/auth", require("./routes/api/auth"));
-app.use("/api/profile", require("./routes/api/profile"));
-app.use("/api/posts", require("./routes/api/posts"));
+app.use("/api/users", usersRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/profile", profileRouter);
+app.use("/api/posts", postsRouter);
 
 const PORT = process.env.PORT || 5000;
 
